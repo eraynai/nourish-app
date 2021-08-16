@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
 	GoogleMap,
 	Marker,
@@ -18,10 +18,10 @@ import {
 } from '@reach/combobox';
 import { mapStyle } from '../../mapstyles';
 import NourishLogo from '../Static/Icons/nourish_logo.png';
+import Fridge from '../Static/Icons/fridge2.svg';
 
 const libraries = ['places'];
-// const mapContainerStyle = { width: '67vw', height: '96vh' };
-const mapContainerStyle = { width: '100vw', height: '100vh' };
+const mapContainerStyle = { width: '67vw', height: '96vh' };
 
 const center = {
 	lat: 43.653225,
@@ -40,17 +40,41 @@ export default function Map() {
 		libraries,
 	});
 
+	const [markers, setMarkers] = useState([]);
+
 	if (loadError) return 'Error loading maps';
 	if (!isLoaded) return 'Loading Maps';
 	return (
 		<React.Fragment>
-			<h1>Nourish</h1>
 			<GoogleMap
 				mapContainerStyle={mapContainerStyle}
 				zoom={8}
 				center={center}
 				options={options}
-			></GoogleMap>
+				onClick={(event) => {
+					setMarkers((current) => [
+						...current,
+						{
+							lat: event.latLng.lat(),
+							lng: event.latLng.lng(),
+							time: new Date(),
+						},
+					]);
+				}}
+			>
+				{markers.map((marker) => (
+					<Marker
+						key={marker.time}
+						position={{ lat: marker.lat, lng: marker.lng }}
+						icon={{
+							url: Fridge,
+							scaledSize: new window.google.maps.Size(30, 30),
+							origin: new window.google.maps.Point(0, 0),
+							anchor: new window.google.maps.Point(15, 15),
+						}}
+					/>
+				))}
+			</GoogleMap>
 		</React.Fragment>
 	);
 }
