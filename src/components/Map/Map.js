@@ -64,11 +64,16 @@ export default function Map() {
 		mapRef.current = map;
 	}, []);
 
+	const panTo = useCallback(({ lat, lng }) => {
+		mapRef.current.panTo({ lat, lng });
+		mapRef.current.setZoom(14);
+	}, []);
+
 	if (loadError) return 'Error loading maps';
 	if (!isLoaded) return 'Loading Maps';
 	return (
 		<React.Fragment>
-			<Search />
+			<Search panTo={panTo} />
 
 			<GoogleMap
 				mapContainerStyle={mapContainerStyle}
@@ -113,7 +118,7 @@ export default function Map() {
 	);
 }
 
-function Search() {
+function Search({ panTo }) {
 	const {
 		ready,
 		value,
@@ -133,7 +138,8 @@ function Search() {
 				onSelect={async (address) => {
 					try {
 						const result = await getGeocode({ address });
-						console.log(result[0]);
+						const { lat, lng } = await getLatLng(result[0]);
+						panTo({ lat, lng });
 					} catch (error) {
 						console.log('error!');
 					}
