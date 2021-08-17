@@ -20,6 +20,7 @@ import { mapStyle } from '../../mapstyles';
 import Fridge from '../../Static/Icons/fridge2.svg';
 import { Address } from '../Map/index';
 import '@reach/combobox/styles.css';
+require('dotenv').config();
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -40,7 +41,7 @@ const options = {
 
 export default function Map() {
 	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: 'AIzaSyB5PaxGZCM52I209G2FGzyhjdtAhpwfg1U',
+		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 		libraries,
 	});
 
