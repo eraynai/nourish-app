@@ -19,6 +19,7 @@ import {
 import { mapStyle } from '../../mapstyles';
 import Fridge from '../../Static/Icons/fridge2.svg';
 import { Address } from '../Map/index';
+import '@reach/combobox/styles.css';
 
 const libraries = ['places'];
 const mapContainerStyle = {
