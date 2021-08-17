@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import {
 	GoogleMap,
 	Marker,
@@ -12,16 +12,19 @@ import usePlacesAutocomplete, {
 } from 'use-places-autocomplete';
 import {
 	Combobox,
-	ComboBoxInput,
-	ComboBoxPopover,
-	ComboBoxOption,
+	ComboboxInput,
+	ComboboxPopover,
+	ComboboxOption,
 } from '@reach/combobox';
 import { mapStyle } from '../../mapstyles';
-import NourishLogo from '../Static/Icons/nourish_logo.png';
-import Fridge from '../Static/Icons/fridge2.svg';
+import Fridge from '../../Static/Icons/fridge2.svg';
+import { Address } from '../Map/index';
 
 const libraries = ['places'];
-const mapContainerStyle = { width: '67vw', height: '96vh' };
+const mapContainerStyle = {
+	width: '100vw',
+	height: '100vh',
+};
 
 const center = {
 	lat: 43.653225,
@@ -41,26 +44,37 @@ export default function Map() {
 	});
 
 	const [markers, setMarkers] = useState([]);
+	const [selected, setSelected] = useState(null);
+
+	const onMapClick = useCallback((event) => {
+		setMarkers((current) => [
+			...current,
+			{
+				lat: event.latLng.lat(),
+				lng: event.latLng.lng(),
+				time: new Date(),
+			},
+		]);
+	}, []);
+
+	const mapRef = useRef();
+	const onMapLoad = useCallback((map) => {
+		mapRef.current = map;
+	}, []);
 
 	if (loadError) return 'Error loading maps';
 	if (!isLoaded) return 'Loading Maps';
 	return (
 		<React.Fragment>
+			<Search />
+
 			<GoogleMap
 				mapContainerStyle={mapContainerStyle}
 				zoom={8}
 				center={center}
 				options={options}
-				onClick={(event) => {
-					setMarkers((current) => [
-						...current,
-						{
-							lat: event.latLng.lat(),
-							lng: event.latLng.lng(),
-							time: new Date(),
-						},
-					]);
-				}}
+				onClick={onMapClick}
+				onLoad={onMapLoad}
 			>
 				{markers.map((marker) => (
 					<Marker
@@ -72,9 +86,73 @@ export default function Map() {
 							origin: new window.google.maps.Point(0, 0),
 							anchor: new window.google.maps.Point(15, 15),
 						}}
+						onClick={() => {
+							setSelected(marker);
+						}}
 					/>
 				))}
+				{selected ? (
+					<InfoWindow
+						position={{ lat: selected.lat, lng: selected.lng }}
+						onCloseClick={() => {
+							setSelected(null);
+						}}
+					>
+						<div>
+							<h2>Food Box Details:</h2>
+							<p>
+								Food dropped off at {formatRelative(selected.time, new Date())}
+							</p>
+						</div>
+					</InfoWindow>
+				) : null}
 			</GoogleMap>
 		</React.Fragment>
+	);
+}
+
+function Search() {
+	const {
+		ready,
+		value,
+		suggestions: { status, data },
+		setValue,
+		clearSuggestions,
+	} = usePlacesAutocomplete({
+		requestOptions: {
+			location: { lat: () => 43.653225, lng: () => -79.383186 },
+			radius: 200 * 1000,
+		},
+	});
+
+	return (
+		<Address>
+			<Combobox
+				onSelect={async (address) => {
+					try {
+						const result = await getGeocode({ address });
+						console.log(result[0]);
+					} catch (error) {
+						console.log('error!');
+					}
+					// console.log(address);
+				}}
+			>
+				<ComboboxInput
+					value={value}
+					onChange={(e) => {
+						setValue(e.target.value);
+					}}
+					disabled={!ready}
+					placeholder='Enter An Address'
+				/>
+				<ComboboxPopover>
+					{status === 'OK' &&
+						data.map(({ id, description }) => (
+							<ComboboxOption key={id} value={description} />
+						))}
+				</ComboboxPopover>
+			</Combobox>
+		</Address>
 	);
 }
