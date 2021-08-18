@@ -12,7 +12,6 @@ async function create(req, res) {
 			user: req.body._id,
 			date: req.body.date,
 			description: req.body.description,
-			imageUrl: req.file.path,
 		});
 		User.findById(req.user._id, function (err, user) {
 			user.fridges.push(newFridge);
@@ -25,6 +24,16 @@ async function create(req, res) {
 	}
 }
 
+async function getAll(req, res) {
+	try {
+		let fridges = await Fridge({});
+		res.status(200).json(fridges);
+	} catch (err) {
+		res.json(err);
+	}
+}
+
 module.exports = {
 	create,
+	getAll,
 };

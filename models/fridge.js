@@ -10,7 +10,6 @@ const fridgeSchema = new Schema(
 		time: Date,
 		date: Date,
 		description: String,
-		imageUrl: String,
 		user: { type: Schema.Types.ObjectId, ref: 'User' },
 	},
 	{

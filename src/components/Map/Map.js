@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import {
 	GoogleMap,
 	Marker,
@@ -22,8 +22,7 @@ import Fridge from '../../Static/Icons/fridge2.svg';
 import Compass from '../../Static/Icons/compass.svg';
 import { Address, CompassIcon } from '../Map/index';
 import '@reach/combobox/styles.css';
-import './Map.css'
-
+import FridgeForm from '../FridgeForm/FridgeForm';
 
 require('dotenv').config();
 
@@ -53,6 +52,29 @@ export default function Map() {
 	const [markers, setMarkers] = useState([]);
 	const [selected, setSelected] = useState(null);
 
+	useEffect(() => {
+		let jwt = localStorage.getItem('token');
+		fetch('/api/fridges', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer ' + jwt,
+			},
+		})
+			.then((fetchResponse) => fetchResponse.json())
+			.then((events) => {
+				let _events = events
+					.filter((event) => event.lat && event.lng && event.time)
+					.map((event) => ({
+						...event,
+						submitted: true,
+						time: new Date(event.time),
+					}));
+				console.log(_events);
+				setMarkers(_events);
+			});
+	}, []);
+
 	const onMapClick = useCallback((event) => {
 		setMarkers((current) => [
 			...current,
@@ -60,6 +82,7 @@ export default function Map() {
 				lat: event.latLng.lat(),
 				lng: event.latLng.lng(),
 				time: new Date(),
+				submitted: false,
 			},
 		]);
 	}, []);
@@ -74,15 +97,26 @@ export default function Map() {
 		mapRef.current.setZoom(16);
 	}, []);
 
+	const updateMarker = ({ name, address, lat, lng, date, description }) => {
+		let ms = [...markers];
+		let marker = ms.find((m) => m.lat === lat && m.lng === lng);
+		marker.submitted = true;
+		marker.name = name;
+		marker.address = address;
+		marker.description = description;
+		marker.date = date;
+		setMarkers(ms);
+	};
+
 	if (loadError) return 'Error loading maps';
 	if (!isLoaded) return 'Loading Maps';
 	return (
 		<React.Fragment>
-			<div className="googleMap">
-			<Search panTo={panTo} />
+			<Search panTo={panTo} setMarkers={setMarkers} />
 			<Locate panTo={panTo} />
-			
-			<GoogleMap className="map"
+
+			<GoogleMap
+				className='map'
 				mapContainerStyle={mapContainerStyle}
 				zoom={8}
 				center={center}
@@ -114,14 +148,21 @@ export default function Map() {
 					>
 						<div>
 							<h2>Food Box Details:</h2>
-							<p>
-								Food dropped off at {formatRelative(selected.time, new Date())}
-							</p>
+							{selected.submitted ? (
+								<>
+									<p>Company Name: {selected.name}</p>
+									<p>Fridge Address: {selected.address}</p>
+									<p>Date: {selected.date}</p>
+									<p>Description: {selected.description}</p>
+								</>
+							) : (
+								<FridgeForm fridges={selected} updateMarker={updateMarker} />
+							)}
+							<p>Created: {formatRelative(selected.time, new Date())}</p>
 						</div>
 					</InfoWindow>
 				) : null}
 			</GoogleMap>
-			</div>
 		</React.Fragment>
 	);
 }
