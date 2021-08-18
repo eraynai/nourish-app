@@ -7,6 +7,7 @@ export default class Home extends Component {
   state = {
     fridge: [],
   }
+
   getFridge = async () => {
     let jwt = localStorage.getItem('token')
     let fetchFridgeDataResponse = await fetch('/api/fridge/' + this.props.user._id, {headers: {'Authorization': 'Bearer ' + jwt}})
@@ -30,21 +31,23 @@ export default class Home extends Component {
         <h1 className="fridge-title">Your Fridge Details</h1>
           <div className="user-fridge">
               {this.state.fridge.map(f =>
-              		{f.name},
-                    <br/>,
-                    {f.lat},
+              		<div>
+                      {f.name}
                     <br/>
-                    {f.lng},
+                    {f.lat}
                     <br/>
-                    {f.address},
+                    {f.lng}
+                    <br/>
+                    {f.address}
                     <br />
-                    {f.time},
+                    {f.time}
                     <br />
                     {f.date}
                     <br/>
                     {f.description}
                     <br/>
                     {f.imageUrl}
+                    </div>
               )}
           </div>
 
