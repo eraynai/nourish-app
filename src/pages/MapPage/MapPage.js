@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './MapPage.css';
 
 import Map from '../../components/Map/Map';
 

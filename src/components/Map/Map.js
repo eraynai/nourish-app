@@ -22,6 +22,9 @@ import Fridge from '../../Static/Icons/fridge2.svg';
 import Compass from '../../Static/Icons/compass.svg';
 import { Address, CompassIcon } from '../Map/index';
 import '@reach/combobox/styles.css';
+import './Map.css'
+
+
 require('dotenv').config();
 
 const libraries = ['places'];
@@ -75,10 +78,11 @@ export default function Map() {
 	if (!isLoaded) return 'Loading Maps';
 	return (
 		<React.Fragment>
+			<div className="googleMap">
 			<Search panTo={panTo} />
 			<Locate panTo={panTo} />
-
-			<GoogleMap
+			
+			<GoogleMap className="map"
 				mapContainerStyle={mapContainerStyle}
 				zoom={8}
 				center={center}
@@ -117,6 +121,7 @@ export default function Map() {
 					</InfoWindow>
 				) : null}
 			</GoogleMap>
+			</div>
 		</React.Fragment>
 	);
 }
