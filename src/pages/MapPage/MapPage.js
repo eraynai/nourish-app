@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './MapPage.css';
-
+import Nav from '../../components/Nav/Nav';
 import Map from '../../components/Map/Map';
-import { MapGrid, PlaceGrid } from './index';
+import { MapGrid, PlaceGrid, PlaceNav } from './index';
 
 export default class DonationPage extends Component {
 	render() {
@@ -11,6 +11,9 @@ export default class DonationPage extends Component {
 				<PlaceGrid>
 					<Map />
 				</PlaceGrid>
+				<PlaceNav>
+					<Nav />
+				</PlaceNav>
 			</MapGrid>
 		);
 	}

@@ -28,6 +28,9 @@ export default class Home extends Component {
   render() {
     return (
      <div className="fridge">
+         <div className="fridgeHeader">
+             <h1>Hello, </h1>
+         </div>
         <h1 className="fridge-title">Your Fridge Details</h1>
           <div className="user-fridge">
               {this.state.fridge.map(f =>
@@ -50,7 +53,8 @@ export default class Home extends Component {
                     </div>
               )}
           </div>
-
+          <button id="btn" className="btn-sm">Find A Fridge</button>
+          <button id="btn" className="btn-sm">Add A Fridge</button>
      </div>
     )
   }
