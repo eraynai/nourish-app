@@ -6,6 +6,7 @@ import MapPage from './pages/MapPage/MapPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Nav/Nav';
+import Home from './pages/Home/Home';
 
 
 export default class App extends Component {
@@ -51,7 +52,15 @@ export default class App extends Component {
 								<ProfilePage {...props} user={this.state.user} />
 							)}
 						/>
+						<Route
+							path='/home'
+							render={(props) => (
+								<Home {...props} user={this.state.user} />
+							)}
+						/>
+
 						<Redirect to='/index' />
+						
 						<Nav setUserInState={this.setUserInState} />
 					</Switch>
 					
