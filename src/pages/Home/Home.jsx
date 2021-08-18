@@ -2,6 +2,7 @@ import { Component } from 'react';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './Home.css';
+import Nav from '../../components/Nav/Nav';
 
 export default class Home extends Component {
   state = {
@@ -55,6 +56,7 @@ export default class Home extends Component {
           </div>
           <button id="btn" className="btn-sm">Find A Fridge</button>
           <button id="btn" className="btn-sm">Add A Fridge</button>
+          <Nav />
      </div>
     )
   }
