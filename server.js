@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 //Put API routes here, before the 'catch all' route
 app.use('/api/users', require('./routes/api/users'));
-// app.use('/api/fridges', require('./routes/api/fridges'));
+app.use('/api/fridges', require('./routes/api/fridges'));
 // this is going to do double duty, serving both items and categories-related routes:
 
 // The following "catch all" route (note the *)is necessary

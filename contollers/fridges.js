@@ -12,7 +12,6 @@ async function create(req, res) {
 			user: req.body._id,
 			date: req.body.date,
 			description: req.body.description,
-			imageUrl: req.file.path,
 		});
 		User.findById(req.user._id, function (err, user) {
 			user.fridges.push(newFridge);

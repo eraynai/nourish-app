@@ -51,7 +51,7 @@ export default class SignUpForm extends Component {
                 placeholder="Email"
                 type="text" 
                 name="email" 
-                class="form-input"
+                className="form-input"
                 value={this.state.email} onChange={this.handleChange} required />
 
                 <br />
@@ -60,7 +60,7 @@ export default class SignUpForm extends Component {
                 placeholder="Password"
                 type="password" 
                 name="password" 
-                class="form-input"
+                className="form-input"
                 value={this.state.password} onChange={this.handleChange} required />
 
                 <br />
