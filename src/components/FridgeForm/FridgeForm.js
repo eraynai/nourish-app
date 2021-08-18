@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
 export default class FridgeForm extends Component {
-	state = {
-		name: '',
-		address: '',
-		description: '',
-		date: '',
-	};
-
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: '',
+			address: '',
+			description: '',
+			date: '',
+		};
+	}
 	addFridge = async (e) => {
 		e.preventDefault();
 		try {
@@ -21,9 +23,9 @@ export default class FridgeForm extends Component {
 				body: JSON.stringify({
 					name: this.state.name,
 					address: this.state.address,
-					lat: this.props.event.lat,
-					lng: this.props.event.lng,
-					time: this.props.event.time,
+					lat: this.props.fridges.lat,
+					lng: this.props.fridges.lng,
+					time: this.props.fridges.time,
 					date: this.state.date,
 					description: this.state.description,
 				}),
@@ -32,8 +34,8 @@ export default class FridgeForm extends Component {
 			this.props.updateMarker({
 				name: this.state.name,
 				address: this.state.address,
-				lat: this.props.event.lat,
-				lng: this.props.event.lng,
+				lat: this.props.fridges.lat,
+				lng: this.props.fridges.lng,
 				date: this.state.date,
 				description: this.state.description,
 			});
@@ -66,7 +68,7 @@ export default class FridgeForm extends Component {
 					<input
 						placeholder='Enter Fridge Address'
 						type='text'
-						name='location'
+						name='address'
 						value={this.state.location}
 						onChange={this.handleChange}
 					/>

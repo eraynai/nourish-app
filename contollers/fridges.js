@@ -24,6 +24,16 @@ async function create(req, res) {
 	}
 }
 
+async function getAll(req, res) {
+	try {
+		let fridges = await Fridge({});
+		res.status(200).json(fridges);
+	} catch (err) {
+		res.json(err);
+	}
+}
+
 module.exports = {
 	create,
+	getAll,
 };
