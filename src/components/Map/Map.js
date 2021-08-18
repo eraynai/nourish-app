@@ -62,17 +62,17 @@ export default function Map() {
 			},
 		})
 			.then((fetchResponse) => fetchResponse.json())
-			.then((events) => {
-				let _events = events
-					.filter((event) => event.lat && event.lng && event.time)
-					.map((event) => ({
-						...event,
-						submitted: true,
-						time: new Date(event.time),
-					}));
-				console.log(_events);
-				setMarkers(_events);
-			});
+			// .then((events) => {
+			// 	let _events = events
+			// 		.filter((event) => event.lat && event.lng && event.time)
+			// 		.map((event) => ({
+			// 			...event,
+			// 			submitted: true,
+			// 			time: new Date(event.time),
+			// 		}));
+			// 	console.log(_events);
+			// 	setMarkers(_events);
+			// });
 	}, []);
 
 	const onMapClick = useCallback((event) => {

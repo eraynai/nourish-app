@@ -55,12 +55,10 @@ export default class App extends Component {
 						<Route
 							path='/home'
 							render={(props) => (
-								<Home {...props} user={this.state.user} />
+								<Home {...props} user={this.state.user} /> 
 							)}
 						/>
-
 						<Redirect to='/index' />
-						
 						<Nav setUserInState={this.setUserInState} />
 					</Switch>
 					
