@@ -2,8 +2,11 @@ import './App.css';
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage';
-import DonationPage from './pages/DonationPage/DonationPage';
+import MapPage from './pages/MapPage/MapPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav from './components/Nav/Nav';
+
 
 export default class App extends Component {
 	state = {
@@ -39,7 +42,7 @@ export default class App extends Component {
 						<Route
 							path='/index'
 							render={(props) => (
-								<DonationPage {...props} user={this.state.user} />
+								<MapPage {...props} user={this.state.user} />
 							)}
 						/>
 						<Route
@@ -49,7 +52,9 @@ export default class App extends Component {
 							)}
 						/>
 						<Redirect to='/index' />
+						<Nav setUserInState={this.setUserInState} />
 					</Switch>
+					
 				) : (
 					<AuthPage setUserInState={this.setUserInState} />
 				)}

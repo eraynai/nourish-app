@@ -1,0 +1,9 @@
+.googleMap {
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+}
+
+.map {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}

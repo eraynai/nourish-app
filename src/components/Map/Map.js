@@ -116,6 +116,7 @@ export default function Map() {
 			<Locate panTo={panTo} />
 
 			<GoogleMap
+				className='map'
 				mapContainerStyle={mapContainerStyle}
 				zoom={8}
 				center={center}
