@@ -6,6 +6,7 @@ const fridgeSchema = new Schema(
 		name: String,
 		lat: Number,
 		lng: Number,
+		address: String,
 		time: Date,
 		date: Date,
 		description: String,
