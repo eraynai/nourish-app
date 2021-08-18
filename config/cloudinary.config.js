@@ -9,7 +9,7 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-	cloudinary,
+	cloudinary: cloudinary,
 	params: {
 		folder: 'Nourish',
 		format: async () => 'png',
@@ -19,4 +19,4 @@ const storage = new CloudinaryStorage({
 
 const parser = multer({ storage: storage });
 
-module.exports(parser);
+module.exports = parser;
