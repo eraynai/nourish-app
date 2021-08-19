@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Switch} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
 
@@ -10,15 +10,41 @@ export default class Home extends Component {
   }
 
   getFridge = async () => {
+    
     let jwt = localStorage.getItem('token')
-    let fetchFridgeDataResponse = await fetch('/api/fridge/' + this.props.user._id, {headers: {'Authorization': 'Bearer ' + jwt}})
+    let fetchFridgeDataResponse = await fetch('/api', {method:'GET', headers: {
+        'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jwt}})
     if (!fetchFridgeDataResponse.ok) throw new Error("Couldn't fetch fridge!")
     let FridgeData = await fetchFridgeDataResponse.json() // <------- convert fetch response into a js object
     console.log("get fridges", FridgeData)
     this.setState({fridge: FridgeData});
   };
-  //getOne = asyync (incoming_thought_id) =>
-  //thoughts/the id
+
+  getOneFridge = async (id) => {
+    
+    try{let jwt=localStorage.getItem('token')
+        let fetchFridgeDataResponse= await fetch(`/api/${id}`,
+        {method: 'DELETE', headers: {
+            'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jwt
+        }})
+        let newFridgeList= await fetchFridgeDataResponse.json();
+        this.setState({fridge: newFridgeList})
+        } catch (error) {
+            console.log('this is an error')
+        }
+    }
+    };
+        
+  newFridge = async () => {
+    
+    let jwt = localStorage.getItem('token')
+    let fetchFridgeDataResponse = await fetch('/api/fridges', {method:'GET', headers: {
+        'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jwt}})
+    let FridgeData = await fetchFridgeDataResponse.json() // <------- convert fetch response into a js object
+    console.log("get fridges", FridgeData)
+    this.setState({fridge: FridgeData});
+  };
+
   async componentDidMount() {
     try {
      await this.getFridge();
@@ -26,18 +52,19 @@ export default class Home extends Component {
       console.error('ERROR:', err) // <-- log if error
     }
   };
+
   render() {
     return (
      <div className="fridge">
          <div className="fridgeHeader">
              <h1>Hello, </h1>
          </div>
-        <h1 className="fridge-title">Your Fridge Details</h1>
-          <div className="user-fridge">
-          {this.state.user ? (
-              <div>
-              {this.state.fridge.map(f =>
-              		<div>
+         <h1 className="fridge-title">Your Fridge Details</h1>
+         <div className="user-fridge">
+              {this.state.fridge.length? 
+                <div>
+                {this.state.fridge.map(f =>
+                    <div> 
                     {f.name}
                     <br/>
                     {f.lat}
@@ -54,17 +81,26 @@ export default class Home extends Component {
                     <br/>
                     {f.imageUrl}
                     </div>
-              )}
-              </div>
-          ) : (
-                <h4>You currently don't have any fridges.</h4>
-          )}
+                    // <button>Delete</button>
 
-          </div>
-          <button id="btn" className="btn-sm">Find A Fridge</button>
-          <button id="btn" className="btn-sm">Add A Fridge</button>
+                )} 
+                </div>
+                
+                : 
+
+                <h4>You currently don't have any fridges.</h4>
+            }
+          </div>  
+          <Switch>
+            <Link class="link" exact to='/map'>Find A Fridge</Link>
+            &nbsp;&nbsp;&nbsp;
+            <br/>
+            <Link class="link" exact to='/map'>Add A Fridge</Link>
+            &nbsp;&nbsp;&nbsp;  
+          </Switch>
           <Nav />
      </div>
+   
     )
   }
-}
+_
