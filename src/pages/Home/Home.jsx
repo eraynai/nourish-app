@@ -21,19 +21,21 @@ export default class Home extends Component {
   };
 
   getOneFridge = async (id) => {
-    
-    try{let jwt=localStorage.getItem('token')
-        let fetchFridgeDataResponse= await fetch(`/api/${id}`,
-        {method: 'DELETE', headers: {
-            'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jwt
-        }})
-        let newFridgeList= await fetchFridgeDataResponse.json();
-        this.setState({fridge: newFridgeList})
-        } catch (error) {
-            console.log('this is an error')
-        }
+    try{
+      let jwt = localStorage.getItem('token');
+      let fetchFridgeDataResponse = await fetch(`/api/${id}`,
+      { method: 'DELETE', 
+        headers: {
+          'Content-Type': 'application/json', 'Authorization': 'Bearer ' + jwt
+        },
+      })
+      let newFridgeList = await fetchFridgeDataResponse.json();
+      this.setState({fridge: newFridgeList})
+  } catch(err){
+    console.log('this is an error', err);
     }
-    };
+  }
+    
         
   newFridge = async () => {
     
@@ -45,62 +47,51 @@ export default class Home extends Component {
     this.setState({fridge: FridgeData});
   };
 
-  async componentDidMount() {
-    try {
-     await this.getFridge();
-    } catch (err) {
-      console.error('ERROR:', err) // <-- log if error
-    }
+  componentDidMount() {
+
+    this.getFridge();
   };
 
-  render() {
+ render() {
     return (
-     <div className="fridge">
-         <div className="fridgeHeader">
-             <h1>Hello, </h1>
-         </div>
-         <h1 className="fridge-title">Your Fridge Details</h1>
-         <div className="user-fridge">
-              {this.state.fridge.length? 
+      // <div className="fridge">
+      //     <div className="fridgeHeader">
+      //         <h1>Hello, </h1>
+      //     </div>
+      <React.Fragment>
+        {this.state.fridge.length ? 
+            this.state.fridge.map(f =>
+                     <div> 
+                     {f.name}
+                     <br/>
+                     {f.lat}
+                     <br/>
+                     {f.lng}
+                     <br/>
+                     {f.address}
+                     <br />
+                     {f.time}
+                     <br />
+                     {f.date}
+                     <br/>
+                     {f.description}
+                     <br/>
+                     {f.imageUrl}
+                     </div>
+  
+                ): 
                 <div>
-                {this.state.fridge.map(f =>
-                    <div> 
-                    {f.name}
-                    <br/>
-                    {f.lat}
-                    <br/>
-                    {f.lng}
-                    <br/>
-                    {f.address}
-                    <br />
-                    {f.time}
-                    <br />
-                    {f.date}
-                    <br/>
-                    {f.description}
-                    <br/>
-                    {f.imageUrl}
-                    </div>
-                    // <button>Delete</button>
-
-                )} 
-                </div>
-                
-                : 
-
-                <h4>You currently don't have any fridges.</h4>
-            }
-          </div>  
-          <Switch>
-            <Link class="link" exact to='/map'>Find A Fridge</Link>
-            &nbsp;&nbsp;&nbsp;
-            <br/>
-            <Link class="link" exact to='/map'>Add A Fridge</Link>
-            &nbsp;&nbsp;&nbsp;  
-          </Switch>
-          <Nav />
-     </div>
-   
-    )
+                  <h4>You currently don't have any fridges.</h4>
+                </div>}
+                {/* <Switch> */}
+                  <Link class="link" exact to='/map'>Find A Fridge</Link>
+                  &nbsp;&nbsp;&nbsp;
+                <br/>
+                <Link class="link" exact to='/map'>Add A Fridge</Link>
+                &nbsp;&nbsp;&nbsp;  
+                {/* </Switch> */}
+                <Nav /> 
+        </React.Fragment>
+      )
+    }
   }
-_
