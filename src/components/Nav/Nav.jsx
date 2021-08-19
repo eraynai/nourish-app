@@ -4,7 +4,14 @@ import React, { Component } from 'react';
 import UserLogOut from '../UserLogOut/UserLogOut';
 import AuthPage from '../../pages/AuthPage/AuthPage';
 import history from "../../history";
-
+import Home from '../HomePic/HomePic';
+import home from '../../Static/assets/home.png';
+import ProfilePic from '../ProfilePic/ProfilePic';
+import profilePic from '../../Static/assets/profile.png';
+import InfoPic from '../InfoPic/InfoPic';
+import infoPic from '../../Static/assets/info.png';
+import MapPic from '../MapPic/MapPic';
+import mapPic from '../../Static/assets/map.png';
 // export default function nav(loc) {
 //   history.push(loc);
 // }
@@ -54,11 +61,13 @@ export default class Nav extends React.Component {
         {this.state.user ? 
         <nav className="Nav">
           <div className="nav-container">
-            <Link class="link" exact to='/home'>H</Link>
+            <Link class="link" exact to='/home'><Home pic={home} /></Link>
             &nbsp;&nbsp;&nbsp;
-            <Link class="link" exact to='/map'>M</Link>
+            <Link class="link" exact to='/map'><MapPic pic={mapPic} /></Link>
             &nbsp;&nbsp;&nbsp;
-            <Link class="link" exact to='/user'>U</Link>
+            <Link class="link" exact to='/profile'><ProfilePic pic={profilePic} /></Link>
+            &nbsp;&nbsp;&nbsp;
+            <Link class="link" exact to='/info'><InfoPic pic={infoPic} /></Link>
             &nbsp;&nbsp;&nbsp;
             <Link class="link" exact to='/'>
             <UserLogOut class="logout-button"
