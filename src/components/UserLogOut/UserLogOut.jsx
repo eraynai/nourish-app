@@ -1,5 +1,7 @@
 // import './UserLogOut.css';
-
+import React from 'react';
+import LogOut from '../../Static/assets/logout.svg';
+import './UserLogOut.css';
 
 
 export default function UserLogOut(props) {
@@ -7,7 +9,7 @@ export default function UserLogOut(props) {
     <div className="UserLogOut">
       {/* <div>{user.name}</div>
       <div className="email">{user.email}</div> */}
-      <button id="btn" className="btn-sm" onClick={props.handleLogOut}>log out</button>
+      <img src={LogOut} alt="logout icon" className="logout" id="btn" onClick={props.handleLogOut} />
     </div>
   );
 }
