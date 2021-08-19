@@ -1,64 +1,83 @@
-import React, { useStaste } from 'react';
+import React from 'react';
+import Alert from '../Alert/Alert';
 
 export default function Upload() {
-    const [fileInputState, setFileInputState] = useState('');
-    const [previewSource, setPreviewSource]
-    const [selectedFile, SetSelectedFile] = useState('');
+    const [fileInputState, setFileInputState] = React.useState('');
+    const [previewSource, setPreviewSource] = React.useState('');
+    const [selectedFile, setSelectedFile] = React.useState('');
+    const [successMsg, setSuccessMsg] = React.useState('');
+    const [errMsg, setErrMsg] = React.useState('');
+
 
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         previewFile(file);
-
-    }
-
+        setSelectedFile(file);
+        setFileInputState(e.target.value);
+    };
     const previewFile = (file) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onloadend = ()=>{
+        reader.onloadend = () => {
             setPreviewSource(reader.result);
-        }
-    }
+        };
+    };
 
     const handleSubmitFile = (e) => {
-        console.log('submitting');
         e.preventDefault();
-        if(!previewSource) return;
-        uploadImage(previewSource);
-
-    }
+        if (!selectedFile) return;
+        const reader = new FileReader();
+        reader.readAsDataURL(selectedFile);
+        reader.onloadend = () => {
+            uploadImage(reader.result);
+        };
+        reader.onerror = () => {
+            console.error('AHHHHHHHH!!');
+            setErrMsg('something went wrong!');
+        };
+    };
 
     const uploadImage = async (base64EncodedImage) => {
-        console.log(base64EncodedImage);
-       try {
-         await fetch('/api/upload', {
-            method:'POST',
-            body:JSON.stringify({data: base64EncodedImage}),
-            headers: {'Content-type': 'application/json'}
-         })  
-       } catch (error) {
-           console.error(error);
-       }
-    }
+        try {
+            await fetch('/api/upload', {
+                method: 'POST',
+                body: JSON.stringify({ data: base64EncodedImage }),
+                headers: { 'Content-Type': 'application/json' },
+            });
+            setFileInputState('');
+            setPreviewSource('');
+            setSuccessMsg('Image uploaded successfully');
+        } catch (err) {
+            console.error(err);
+            setErrMsg('Something went wrong!');
+        }
+    };
 
     return (
         <div>
-        <h1>Upload</h1> 
+            <h1 className="title">Upload an Image</h1>
+            <Alert msg={errMsg} type="danger" />
+            <Alert msg={successMsg} type="success" />
             <form onSubmit={handleSubmitFile} className="form">
-                <input 
-                    type="file" 
-                    name="image" 
+                <input
+                    id="fileInput"
+                    type="file"
+                    name="image"
                     onChange={handleFileInputChange}
-                    value={fileInputState} 
+                    value={fileInputState}
                     className="form-input"
                 />
-                
-                <button className="btn" type="submit">Submit</button>
+                <button className="btn" type="submit">
+                    Submit
+                </button>
             </form>
             {previewSource && (
-                <img src={previewSource} alt="chosen"
-                style={{height: '300px'}}
+                <img
+                    src={previewSource}
+                    alt="chosen"
+                    style={{ height: '300px' }}
                 />
-            )}            
+            )}
         </div>
-    )
+    );
 }

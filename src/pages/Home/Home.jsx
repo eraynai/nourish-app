@@ -1,14 +1,14 @@
 import { Component } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link, Switch} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
-import Upload from '../../components/Upload/Upload';
+import UserPic from '../../components/UserPic/UserPic';
 
 export default class Home extends Component {
   state = {
     fridge: [],
-  }
+  };
 
   getFridge = async () => {
     
@@ -60,7 +60,7 @@ export default class Home extends Component {
       //         <h1>Hello, </h1>
       //     </div>
       <React.Fragment>
-        <Upload />
+        <UserPic />
         
         {this.state.fridge.length ? 
             this.state.fridge.map(f =>
