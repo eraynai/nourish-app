@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage';
 import MapPage from './pages/MapPage/MapPage';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
@@ -44,12 +43,6 @@ export default class App extends Component {
 							path='/index'
 							render={(props) => (
 								<MapPage {...props} user={this.state.user} />
-							)}
-						/>
-						<Route
-							path='/profile'
-							render={(props) => (
-								<ProfilePage {...props} user={this.state.user} />
 							)}
 						/>
 						<Route

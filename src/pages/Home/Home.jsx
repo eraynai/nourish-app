@@ -34,9 +34,11 @@ export default class Home extends Component {
          </div>
         <h1 className="fridge-title">Your Fridge Details</h1>
           <div className="user-fridge">
+          {this.state.user ? (
+              <div>
               {this.state.fridge.map(f =>
               		<div>
-                      {f.name}
+                    {f.name}
                     <br/>
                     {f.lat}
                     <br/>
@@ -53,6 +55,11 @@ export default class Home extends Component {
                     {f.imageUrl}
                     </div>
               )}
+              </div>
+          ) : (
+                <h4>You currently don't have any fridges.</h4>
+          )}
+
           </div>
           <button id="btn" className="btn-sm">Find A Fridge</button>
           <button id="btn" className="btn-sm">Add A Fridge</button>

@@ -6,8 +6,6 @@ import AuthPage from '../../pages/AuthPage/AuthPage';
 import history from "../../history";
 import Home from '../HomePic/HomePic';
 import home from '../../Static/assets/home.png';
-import ProfilePic from '../ProfilePic/ProfilePic';
-import profilePic from '../../Static/assets/profile.png';
 import InfoPic from '../InfoPic/InfoPic';
 import infoPic from '../../Static/assets/info.png';
 import MapPic from '../MapPic/MapPic';
@@ -64,8 +62,6 @@ export default class Nav extends React.Component {
             <Link class="link" exact to='/home'><Home pic={home} /></Link>
             &nbsp;&nbsp;&nbsp;
             <Link class="link" exact to='/map'><MapPic pic={mapPic} /></Link>
-            &nbsp;&nbsp;&nbsp;
-            <Link class="link" exact to='/profile'><ProfilePic pic={profilePic} /></Link>
             &nbsp;&nbsp;&nbsp;
             <Link class="link" exact to='/info'><InfoPic pic={infoPic} /></Link>
             &nbsp;&nbsp;&nbsp;
