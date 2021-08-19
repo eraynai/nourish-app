@@ -1,9 +1,10 @@
 import { Component } from 'react';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {Link, Switch} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
 import UserPic from '../../components/UserPic/UserPic';
+import { HomeGrid } from './index';
 
 export default class Home extends Component {
   state = {
@@ -61,9 +62,15 @@ export default class Home extends Component {
       //     </div>
       <React.Fragment>
         <UserPic />
-        
-        {this.state.fridge.length ? 
-            this.state.fridge.map(f =>
+
+
+        <div className='backgroundHome'>
+        <div class="card">
+          <div class="card-content">
+            <div class="content">
+  
+             {this.state.fridge.length ? 
+                this.state.fridge.map(f =>
                      <div> 
                      {f.name}
                      <br/>
@@ -81,19 +88,26 @@ export default class Home extends Component {
                      <br/>
                      {f.imageUrl}
                      </div>
-  
+     
                 ): 
                 <div>
                   <h4>You currently don't have any fridges.</h4>
                 </div>}
-                {/* <Switch> */}
-                  <Link class="link" exact to='/map'>Find A Fridge</Link>
-                  &nbsp;&nbsp;&nbsp;
-                <br/>
-                <Link class="link" exact to='/map'>Add A Fridge</Link>
-                &nbsp;&nbsp;&nbsp;  
-                {/* </Switch> */}
-                <Nav /> 
+
+            </div>
+          </div>
+        </div>
+        </div>
+        {/* <Switch> */}
+        <div className="link">
+        <Link className="link" exact to='/map'>Find A Fridge</Link>
+        &nbsp;&nbsp;&nbsp;
+        
+        <Link class="link" exact to='/map'>Add A Fridge</Link>
+        &nbsp;&nbsp;&nbsp;  
+        {/* </Switch> */}
+        </div>
+        <Nav /> 
         </React.Fragment>
       )
     }
