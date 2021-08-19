@@ -19,8 +19,8 @@ import {
 } from '@reach/combobox';
 import { mapStyle } from '../../mapstyles';
 import Fridge from '../../Static/assets/mapFridge.png';
-import Compass from '../../Static/Icons/compass.svg';
-import { Address, CompassIcon } from '../Map/index';
+import Compass from '../../Static/Icons/compass_white.svg';
+import { Address, CompassIcon, AddressHolder } from '../Map/index';
 import '@reach/combobox/styles.css';
 import FridgeForm from '../FridgeForm/FridgeForm';
 
@@ -75,17 +75,6 @@ export default function Map() {
 				console.log(_events);
 				setMarkers(_events);
 			});
-		// .then((fridges) => {
-		// 	let fridge = Object.entries(fridges);
-		// 	console.log(fridge);
-		// 		.filter((fridge) => fridge.lat && fridge.lng && fridge.time)
-		// 		.map((fridge) => ({
-		// 			...fridge,
-		// 			submitted: true,
-		// 			time: new Date(fridge.time),
-		// 		}));
-		// 	setMarkers(_fridges);
-		// });
 	}, []);
 
 	const onMapClick = useCallback((event) => {
