@@ -28,6 +28,7 @@ export default class FridgeForm extends Component {
 					time: this.props.fridges.time,
 					date: this.state.date,
 					description: this.state.description,
+					user: this.props.user,
 				}),
 			});
 			await fetchResponse.json();

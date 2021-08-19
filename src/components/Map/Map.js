@@ -61,7 +61,9 @@ export default function Map() {
 				Authorization: 'Bearer ' + jwt,
 			},
 		})
-			.then((fetchResponse) => fetchResponse.json())
+			.then((fetchResponse) => {
+				return fetchResponse.json();
+			})
 			.then((events) => {
 				let _events = events
 					.filter((event) => event.lat && event.lng && event.time)
@@ -73,6 +75,17 @@ export default function Map() {
 				console.log(_events);
 				setMarkers(_events);
 			});
+		// .then((fridges) => {
+		// 	let fridge = Object.entries(fridges);
+		// 	console.log(fridge);
+		// 		.filter((fridge) => fridge.lat && fridge.lng && fridge.time)
+		// 		.map((fridge) => ({
+		// 			...fridge,
+		// 			submitted: true,
+		// 			time: new Date(fridge.time),
+		// 		}));
+		// 	setMarkers(_fridges);
+		// });
 	}, []);
 
 	const onMapClick = useCallback((event) => {
@@ -156,7 +169,11 @@ export default function Map() {
 									<p>Description: {selected.description}</p>
 								</>
 							) : (
-								<FridgeForm fridges={selected} updateMarker={updateMarker} />
+								<FridgeForm
+									user={this.user}
+									fridges={selected}
+									updateMarker={updateMarker}
+								/>
 							)}
 							<p>Created: {formatRelative(selected.time, new Date())}</p>
 						</div>
