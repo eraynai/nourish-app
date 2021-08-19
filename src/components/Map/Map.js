@@ -18,7 +18,7 @@ import {
 	ComboboxList,
 } from '@reach/combobox';
 import { mapStyle } from '../../mapstyles';
-import Fridge from '../../Static/assets/mapFridge.png';
+import Fridge from '../../Static/Icons/fridge2.svg';
 import Compass from '../../Static/Icons/compass.svg';
 import { Address, CompassIcon } from '../Map/index';
 import '@reach/combobox/styles.css';
@@ -60,7 +60,8 @@ export default function Map() {
 				'Content-Type': 'application/json',
 				Authorization: 'Bearer ' + jwt,
 			},
-		}).then((fetchResponse) => {
+		})
+			.then((fetchResponse) => {
 				return fetchResponse.json();
 			})
 			.then((events) => {
@@ -74,6 +75,17 @@ export default function Map() {
 				console.log(_events);
 				setMarkers(_events);
 			});
+		// .then((fridges) => {
+		// 	let fridge = Object.entries(fridges);
+		// 	console.log(fridge);
+		// 		.filter((fridge) => fridge.lat && fridge.lng && fridge.time)
+		// 		.map((fridge) => ({
+		// 			...fridge,
+		// 			submitted: true,
+		// 			time: new Date(fridge.time),
+		// 		}));
+		// 	setMarkers(_fridges);
+		// });
 	}, []);
 
 	const onMapClick = useCallback((event) => {
@@ -157,11 +169,7 @@ export default function Map() {
 									<p>Description: {selected.description}</p>
 								</>
 							) : (
-								<FridgeForm
-									user={this.user}
-									fridges={selected}
-									updateMarker={updateMarker}
-								/>
+								<FridgeForm fridges={selected} updateMarker={updateMarker} />
 							)}
 							<p>Created: {formatRelative(selected.time, new Date())}</p>
 						</div>
