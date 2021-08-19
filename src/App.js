@@ -82,7 +82,9 @@ export default class App extends Component {
 									)}
 								/>
 						</Switch>
+						<h1>Nourish</h1>
 						<Logo pic={logo} />
+
 						<Link class="link" exact to='/signup'>Sign Up</Link>
            				 &nbsp;&nbsp;&nbsp;
             			<Link class="link" exact to='/login'>Log In</Link>

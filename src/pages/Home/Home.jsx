@@ -3,6 +3,7 @@ import React from 'react';
 import {Link, Switch} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
+import Upload from '../../components/Upload/Upload';
 
 export default class Home extends Component {
   state = {
@@ -54,11 +55,13 @@ export default class Home extends Component {
 
  render() {
     return (
-      // <div className="fridge">
+            // <div className="fridge">
       //     <div className="fridgeHeader">
       //         <h1>Hello, </h1>
       //     </div>
       <React.Fragment>
+        <Upload />
+        
         {this.state.fridge.length ? 
             this.state.fridge.map(f =>
                      <div> 
