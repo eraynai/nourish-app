@@ -26,7 +26,7 @@ export default function Home() {
                             key={index}
                             cloudName={process.env.REACT_APP_CLOUDINARY_NAME}
                             publicId={imageId}
-                            width="300"
+                            width="250"
                             crop="scale"
                         />
                     ))}

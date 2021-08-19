@@ -57,7 +57,7 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div>
+      <div classname='navbar'>
         {this.state.user ? 
         <NavOut>
             <NavCon>

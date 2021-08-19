@@ -63,7 +63,9 @@ export default class App extends Component {
 							)}
 						/>
 						<Redirect to='/index' />
+						<div className="navbar">
 						<Nav setUserInState={this.setUserInState} />
+						</div>
 					</Switch>
 					
 				) : (
