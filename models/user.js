@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
 	{
-		fridges: { type: Schema.Types.ObjectId, ref: 'Fridge' },
 		name: { type: String, required: true },
 		email: {
 			type: String,
@@ -18,6 +17,7 @@ const userSchema = new Schema(
 			minLength: 3,
 			required: true,
 		},
+		fridges: [{ type: Schema.Types.ObjectId, ref: 'Fridge' }],
 	},
 	{
 		timestamps: true,
