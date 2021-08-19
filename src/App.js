@@ -7,7 +7,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
-
+import InfoPage from './pages/InfoPage/InfoPage';
 
 export default class App extends Component {
 	state = {
@@ -55,12 +55,16 @@ export default class App extends Component {
 						<Route
 							path='/home'
 							render={(props) => (
-								<Home {...props} user={this.state.user} />
+								<Home {...props} user={this.state.user} /> 
 							)}
 						/>
-
+						<Route
+							path='/info'
+							render={(props) => (
+								<InfoPage {...props} user={this.state.user} /> 
+							)}
+						/>
 						<Redirect to='/index' />
-						
 						<Nav setUserInState={this.setUserInState} />
 					</Switch>
 					

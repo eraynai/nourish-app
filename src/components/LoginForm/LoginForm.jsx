@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import './LoginForm.css';
+import Logo from '../Logo/Logo';
+import logo from '../../Static/assets/fridgeLogo.png';
 
 export default class SignUpForm extends Component {
   state = {
@@ -43,6 +45,7 @@ export default class SignUpForm extends Component {
   render() {
     return (
       <div className="account-form-container">
+          <Logo className="logo" pic={logo} />
           <header className="account-header">Welcome Back!</header>
             <div className="account-form-content">
               <form className="account-form-contents account" autoComplete="off" onSubmit={this.handleSubmit}>

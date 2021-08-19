@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import './SignUpForm.css';
+import Logo from '../Logo/Logo';
+import logo from '../../Static/assets/fridgeLogo.png';
 
 
 export default class SignUpForm extends Component {
@@ -46,7 +48,10 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
+      <div>
+      <Logo pic={logo} />
       <div className="account-form-container">
+        
         <header className="account-header">Create Account</header>
           <div className="account-form-content">
             <form className="account-form-contents account" autoComplete="off" onSubmit={this.handleSubmit}>
@@ -95,6 +100,7 @@ export default class SignUpForm extends Component {
            </form>
           </div>
         <p className="error-message">&nbsp;{this.state.error}</p>
+      </div>
       </div>
     );
   }
