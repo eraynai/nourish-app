@@ -1,4 +1,4 @@
-
+import './Nav.css';
 import {Link} from 'react-router-dom';
 import React, { Component } from 'react';
 import UserLogOut from '../UserLogOut/UserLogOut';
@@ -10,6 +10,7 @@ import InfoPic from '../InfoPic/InfoPic';
 import infoPic from '../../Static/assets/info.png';
 import MapPic from '../MapPic/MapPic';
 import mapPic from '../../Static/assets/map.png';
+import {NavOut, NavCon, Links } from './index';
 // export default function nav(loc) {
 //   history.push(loc);
 // }
@@ -57,21 +58,18 @@ export default class Nav extends React.Component {
     return (
       <div>
         {this.state.user ? 
-        <nav className="Nav">
-          <div className="nav-container">
-            <Link class="link" exact to='/home'><Home pic={home} /></Link>
-            &nbsp;&nbsp;&nbsp;
-            <Link class="link" exact to='/map'><MapPic pic={mapPic} /></Link>
-            &nbsp;&nbsp;&nbsp;
-            <Link class="link" exact to='/info'><InfoPic pic={infoPic} /></Link>
-            &nbsp;&nbsp;&nbsp;
-            <Link class="link" exact to='/'>
+        <NavOut>
+            <NavCon>
+            <Links  exact to='/home'><Home className="homePic" pic={home} style={{width: 30, height:30 }} /></Links>
+            <Links exact to='/map'><MapPic className="mapPic" pic={mapPic} /></Links>
+            <Links exact to='/info'><InfoPic className="InfoPic" pic={infoPic} /></Links>
+            {/* <Link class="link" exact to='/'>
             <UserLogOut class="logout-button"
               handleLogOut={this.handleLogOut}
             />
-            </Link>
-          </div>
-        </nav>
+            </Link> */}
+            </NavCon>
+        </NavOut>
         :
         <AuthPage setUserInState={this.setUserInState}/>
         } 
