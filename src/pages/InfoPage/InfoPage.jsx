@@ -12,7 +12,7 @@ export default class InfoPage extends React.Component {
             <InfoGrid>
 
             <ItemA>
-            <h1>Nourish</h1>
+            <h1 classname="infonourish">Nourish</h1>
             </ItemA>
                
             <ItemB>

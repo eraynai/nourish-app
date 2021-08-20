@@ -1,7 +1,7 @@
 .link {
     display: flex;
 	justify-content: space-evenly;
-    margin-top: 5rem;
+    margin-top: 3rem;
 }
 
 .fontColor {
@@ -23,3 +23,20 @@ img.mapFridge {
     float: left;
     margin-top: 7px;
 }
+
+button {
+    background-color: black;
+    color: white;
+    text-decoration: none !important;
+    border-radius: 9px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    padding-top: 5px
+}
+  /* a:hover, a:active {
+    background-color: red; */

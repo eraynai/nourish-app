@@ -29,7 +29,7 @@ require('dotenv').config();
 const libraries = ['places'];
 const mapContainerStyle = {
 	width: '100vw',
-	height: '100vh',
+	height: '79vh',
 };
 
 const center = {
@@ -228,7 +228,7 @@ function Search({ panTo }) {
 						setValue(e.target.value);
 					}}
 					disabled={!ready}
-					placeholder='Enter An Address'
+					placeholder='Search A Drop Off Location'
 				/>
 				<ComboboxPopover>
 					<ComboboxList>

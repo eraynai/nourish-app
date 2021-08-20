@@ -11,6 +11,7 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import Logo from './components/Logo/Logo';
 import logo from './Static/assets/fridgeLogo.png';
+import { AppGrid, ItemA, ItemB } from './index';
 
 
 export default class App extends Component {
@@ -69,29 +70,20 @@ export default class App extends Component {
 					</Switch>
 					
 				) : (
-					<div>
-						<Switch>
-							<Route
-									path='/signup'
-									render={(props) => (
-										<SignUpForm {...props} user={this.state.user} />
-									)}
-								/>
-								<Route
-									path='/login'
-									render={(props) => (
-										<LoginForm {...props} user={this.state.user} /> 
-									)}
-								/>
-						</Switch>
-						<h1>Nourish</h1>
-						<Logo pic={logo} />
+						<div className="containermain">
+							<div className="titlemain">	
+								<h1 className="startpage">Nourish</h1>
+								<p className="slogan">Let's put an end to hunger together.</p>
+							</div>
+							<div className="bottommain">
+								<Logo pic={logo} />
+								<div className="authposition">
+									<AuthPage setUserInState={this.setUserInState}/>
+								</div>
+							</div>
+						</div>
+					
 
-						<Link class="link" exact to='/signup'>Sign Up</Link>
-           				 &nbsp;&nbsp;&nbsp;
-            			<Link class="link" exact to='/login'>Log In</Link>
-            			&nbsp;&nbsp;&nbsp;
-					</div>
 				)}
 			</React.Fragment>
 		);

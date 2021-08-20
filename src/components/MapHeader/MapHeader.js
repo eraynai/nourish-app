@@ -6,7 +6,7 @@ export default class MapAddress extends Component {
 		return (
 			<React.Fragment>
 				<div>
-					<h1>Find a Fridge!</h1>
+					<h2>Find a Fridge</h2>
 				</div>
 			</React.Fragment>
 		);

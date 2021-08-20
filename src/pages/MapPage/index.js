@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MapGrid = styled.div`
 	display: grid;
-	grid-template-rows: 150px 1fr 150px;
+	grid-template-rows: 100px 41rem 53px;
 	
 	grid-template-areas:
 		'. header header .'
@@ -12,6 +12,7 @@ export const MapGrid = styled.div`
 
 export const PlaceHeader1 = styled.div`
 	grid-area: header;
+	margin-top: 35px;
 `;
 
 export const PlaceGrid2 = styled.div`

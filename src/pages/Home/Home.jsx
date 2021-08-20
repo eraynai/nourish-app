@@ -72,6 +72,7 @@ export default class Home extends Component {
         <h2 className="helloUser">Hello, {this.props.user.name}</h2>
       </ItemA> 
       <ItemB>
+        <h4 className="title">Your Fridge Details</h4>
         <div class="card-has-background-black">
           <div class="card-content">
             <div class="content">
@@ -109,10 +110,10 @@ export default class Home extends Component {
         </div>
         {/* <Switch> */}
         <div className="link">
-        <Link className="link" exact to='/map'>Find A Fridge</Link>
+        <Link className="link" id="button" exact to='/map'><button>Find A Fridge</button></Link>
         &nbsp;&nbsp;&nbsp;
         
-        <Link class="link" exact to='/map'>Add A Fridge</Link>
+        <Link class="link" id="button" exact to='/map'><button>Add A Fridge</button></Link>
         &nbsp;&nbsp;&nbsp;  
         {/* </Switch> */}
         </div>
