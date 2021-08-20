@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-export default class MapAddress extends Component{
-    return(
-        <div>
-
-        </div>
-    )
+export default class MapAddress extends Component {
+	render() {
+		return (
+			<div>
+				<h1>Test</h1>
+			</div>
+		);
+	}
 }
