@@ -11,7 +11,7 @@ export const InfoGrid = styled.div`
     	"footer footer footer footer";
 `;
 
-export const ItemA = styled.div`
+export const ItemD = styled.div`
     grid-area: header;
 	text-align: center;
     margin-top: 25px;
@@ -19,7 +19,7 @@ export const ItemA = styled.div`
  
 `;
 
-export const ItemB = styled.div`
+export const ItemE = styled.div`
     grid-area: main;
     background: black;
     color: white;
@@ -34,7 +34,7 @@ export const ItemB = styled.div`
 
 // `;
 
-export const ItemC = styled.div`
+export const ItemF = styled.div`
     grid-area: footer;
     margin-top: 19px;
     margin-left: 10px;

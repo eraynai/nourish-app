@@ -2,7 +2,7 @@ import { Component } from 'react';
 import React from 'react';
 import { ExternalLink } from 'react-external-link';
 import './InfoPage.css';
-import { InfoGrid, ItemA, ItemB, ItemC } from './index';
+import { InfoGrid, ItemD, ItemE, ItemF } from './index';
 import Nav from '../../components/Nav/Nav';
 
 export default class InfoPage extends React.Component {
@@ -11,11 +11,11 @@ export default class InfoPage extends React.Component {
                            
             <InfoGrid>
 
-            <ItemA>
+            <ItemD>
             <h1 classname="infonourish">Nourish</h1>
-            </ItemA>
+            </ItemD>
                
-            <ItemB>
+            <ItemE>
             <h3>About The Application</h3>
                                
             <h6>Nourish is an application where you can donate food, find food and 
@@ -47,11 +47,11 @@ export default class InfoPage extends React.Component {
                 </ExternalLink>
                 that shows you a tutorial of how.
             </p>
-            </ItemB>
+            </ItemE>
 
-            <ItemC>    
+            <ItemF>    
                 <Nav />
-            </ItemC>
+            </ItemF>
             
             </InfoGrid>            
      
