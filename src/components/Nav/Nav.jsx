@@ -34,6 +34,8 @@ export default class Nav extends React.Component {
     //   isLoggedIn: false,
     localStorage.removeItem('token');
 		this.setState({ user: null });
+    window.location.href = '/';
+
     }
 
   componentDidMount() {
