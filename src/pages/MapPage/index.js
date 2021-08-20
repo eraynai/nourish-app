@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MapGrid = styled.div`
 	display: grid;
-	grid-template-rows: 100px 1fr 100px;
+	grid-template-rows: 200px 400px 200px;
 `;
 
 export const PlaceGrid = styled.div`
