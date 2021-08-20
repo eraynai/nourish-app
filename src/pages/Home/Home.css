@@ -1,6 +1,25 @@
 .link {
     display: flex;
 	justify-content: space-evenly;
-    margin-bottom: 3rem;
+    margin-top: 5rem;
 }
 
+.fontColor {
+    color: white;
+    text-align: left;
+    padding-left: 1rem;
+    white-space: break-spaces;
+    padding-top: 1rem;
+}
+
+h2 {
+    margin-top: -6px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+img.mapFridge {
+    width: 30%;
+    float: left;
+    margin-top: 7px;
+}

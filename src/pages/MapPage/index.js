@@ -2,23 +2,23 @@ import styled from 'styled-components';
 
 export const MapGrid = styled.div`
 	display: grid;
-	grid-template-rows: 175px 34rem 50px;
-	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-rows: 150px 1fr 150px;
+	
 	grid-template-areas:
 		'. header header .'
 		'main main main main'
 		'footer footer footer footer';
 `;
 
-export const PlaceHeader = styled.div`
+export const PlaceHeader1 = styled.div`
 	grid-area: header;
 `;
 
-export const PlaceGrid = styled.div`
+export const PlaceGrid2 = styled.div`
 	grid-area: main;
 `;
 
-export const PlaceNav = styled.div`
+export const PlaceNav3 = styled.div`
 	grid-area: footer;
 `;
 

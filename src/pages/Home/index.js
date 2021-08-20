@@ -17,8 +17,14 @@ export const ItemA = styled.div`
 export const ItemB = styled.div`
     grid-area: main;
     background: black;
+    padding-left: 15px;
     
 `;
+
+// export const ItemC = styled.div`
+//     grid area: side;
+
+// `;
 
 export const ItemC = styled.div`
     grid-area: footer;
