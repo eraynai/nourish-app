@@ -20,7 +20,7 @@ import {
 import { mapStyle } from '../../mapstyles';
 import Fridge from '../../Static/assets/mapFridge.png';
 import Compass from '../../Static/Icons/compass_white.svg';
-import { Address, CompassIcon, AddressHolder } from '../Map/index';
+import { Address, CompassIcon } from '../Map/index';
 import '@reach/combobox/styles.css';
 import FridgeForm from '../FridgeForm/FridgeForm';
 

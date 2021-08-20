@@ -1,9 +1,8 @@
 import { Component } from 'react';
 import React from 'react';
-import {Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
-import UserPic from '../../components/UserPic/UserPic';
 import { HomeGrid, ItemA, ItemB, ItemC } from './index';
 import MapFridge from '../../components/MapFridge/MapFridge';
 import mapFridge from '../../Static/assets/mapFridge.png';
@@ -112,10 +111,10 @@ export default class Home extends Component {
         </div>
         {/* <Switch> */}
         <div className="link">
-        <Link className="link" id="button" exact to='/map'><button>Find A Fridge</button></Link>
+        <Link className="link" id="button" to='/map'><button>Find A Fridge</button></Link>
         &nbsp;&nbsp;&nbsp;
         
-        <Link className="link" id="button" exact to='/map'><button>Add A Fridge</button></Link>
+        <Link className="link" id="button" to='/map'><button>Add A Fridge</button></Link>
         &nbsp;&nbsp;&nbsp;  
         {/* </Switch> */}
         </div>

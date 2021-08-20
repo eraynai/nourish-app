@@ -1,4 +1,4 @@
-import { Component } from 'react';
+
 import React from 'react';
 import { ExternalLink } from 'react-external-link';
 import './InfoPage.css';

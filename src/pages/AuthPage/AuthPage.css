@@ -1,26 +1,45 @@
 .AuthPage {
-    margin-top: 40px;
+	margin-top: 40px;
 }
 
 .center-button {
-    margin-bottom: 6px;
-    padding:5px;
+	margin-bottom: 6px;
+	padding: 5px;
 }
 
 header.account-header {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .account-form-button {
-    margin-top: 5px;
+	margin-top: 5px;
 }
 
 input.form-input {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 img.logo {
-    width: 38%;
-    margin-top: -40px;
-    margin-left: 111px;
+	width: 38%;
+	margin-top: -40px;
+	margin-left: 111px;
 }
+
+@media (min-width: 575.98px) {
+	img.logo {
+		margin-left: 30vw;
+	}
+}
+
+@media (max-width: 991.98px) {
+	img.logo {
+		margin-left: 32vw;
+	}
+}
+
+/* @media (min-width: 1200px) {
+	img.logo {
+		width: 20%;
+		margin-left: 39vw;
+	}
+} */

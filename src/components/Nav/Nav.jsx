@@ -1,16 +1,15 @@
 import './Nav.css';
-import {Link} from 'react-router-dom';
-import React, { Component } from 'react';
+
+import React from 'react';
 import UserLogOut from '../UserLogOut/UserLogOut';
 import AuthPage from '../../pages/AuthPage/AuthPage';
-import history from "../../history";
 import Home from '../HomePic/HomePic';
 import home from '../../Static/assets/home.png';
 import InfoPic from '../InfoPic/InfoPic';
 import infoPic from '../../Static/assets/info.png';
 import MapPic from '../MapPic/MapPic';
 import mapPic from '../../Static/assets/map.png';
-import {NavOut, NavCon, Links } from './index';
+import { NavCon, Links } from './index';
 // export default function nav(loc) {
 //   history.push(loc);
 // }
@@ -61,7 +60,7 @@ export default class Nav extends React.Component {
     return (
       <div className='navbar'>
         {this.state.user ? 
-        <NavOut>
+       
             <NavCon>
             <Links  to='/home'><Home className="homePic" pic={home} /></Links>
             <Links  to='/map'><MapPic className="mapPic" pic={mapPic} /></Links>
@@ -72,7 +71,7 @@ export default class Nav extends React.Component {
             />
             </Links>
             </NavCon>
-        </NavOut>
+      
         :
         <AuthPage setUserInState={this.setUserInState}/>
         } 
