@@ -1,10 +1,5 @@
-img.logo {
-    width: 68%;
-    margin-top: -30px;
-    margin-left: 111px;
-}
-.account-options {
-    margin-top: -115px;
+.AuthPage {
+    margin-top: 40px;
 }
 
 .center-button {
@@ -22,4 +17,10 @@ header.account-header {
 
 input.form-input {
     margin-bottom: 5px;
+}
+
+img.logo {
+    width: 38%;
+    margin-top: -40px;
+    margin-left: 111px;
 }

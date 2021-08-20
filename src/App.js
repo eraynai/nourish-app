@@ -11,7 +11,7 @@ import SignUpForm from './components/SignUpForm/SignUpForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import Logo from './components/Logo/Logo';
 import logo from './Static/assets/fridgeLogo.png';
-import { AppGrid, ItemA, ItemB } from './index';
+import { AppGrid, ItemD, ItemE } from './index';
 
 
 export default class App extends Component {
