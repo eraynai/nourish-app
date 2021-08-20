@@ -61,7 +61,7 @@ export default class Nav extends React.Component {
         {this.state.user ? 
         <NavOut>
             <NavCon>
-            <Links  exact to='/home'><Home className="homePic" pic={home} style={{width: 30, height:30 }} /></Links>
+            <Links  exact to='/home'><Home className="homePic" pic={home} /></Links>
             <Links exact to='/map'><MapPic className="mapPic" pic={mapPic} /></Links>
             <Links exact to='/info'><InfoPic className="InfoPic" pic={infoPic} /></Links>
             <Links class="link" exact to='/'>
