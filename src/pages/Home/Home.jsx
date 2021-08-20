@@ -4,7 +4,8 @@ import {Link, Switch} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
 import UserPic from '../../components/UserPic/UserPic';
-import { HomeGrid } from './index';
+import { HomeGrid, ItemA, ItemB, ItemC } from './index';
+
 
 export default class Home extends Component {
   state = {
@@ -61,11 +62,13 @@ export default class Home extends Component {
       //         <h1>Hello, </h1>
       //     </div>
       <React.Fragment>
+      <HomeGrid>
+      <ItemA>  
         <UserPic />
 
-
-        <div className='backgroundHome'>
-        <div class="card">
+      </ItemA> 
+      <ItemB>
+        <div class="card-has-background-black-has-text-white">
           <div class="card-content">
             <div class="content">
   
@@ -97,7 +100,6 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
-        </div>
         {/* <Switch> */}
         <div className="link">
         <Link className="link" exact to='/map'>Find A Fridge</Link>
@@ -107,7 +109,11 @@ export default class Home extends Component {
         &nbsp;&nbsp;&nbsp;  
         {/* </Switch> */}
         </div>
-        <Nav /> 
+        </ItemB>
+        <ItemC>      
+          <Nav />
+        </ItemC>
+        </HomeGrid>
         </React.Fragment>
       )
     }
