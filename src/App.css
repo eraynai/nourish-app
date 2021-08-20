@@ -5,11 +5,6 @@ body, html {
 }
 
 
-img.logo {
-  width: 15%;
-  margin-top: -36px;
-  margin-left: 111px;
-}
 
 .containermain {
   display: grid;
@@ -51,3 +46,4 @@ img.logo {
     font-weight: bold;
     margin-top: 3rem;
 }
+
