@@ -59,15 +59,15 @@ export default class Nav extends React.Component {
 
   render() {
     return (
-      <div classname='navbar'>
+      <div className='navbar'>
         {this.state.user ? 
         <NavOut>
             <NavCon>
-            <Links  exact to='/home'><Home className="homePic" pic={home} /></Links>
-            <Links exact to='/map'><MapPic className="mapPic" pic={mapPic} /></Links>
-            <Links exact to='/info'><InfoPic className="InfoPic" pic={infoPic} /></Links>
-            <Links class="link" exact to='/'>
-            <UserLogOut class="logout-button"
+            <Links  to='/home'><Home className="homePic" pic={home} /></Links>
+            <Links  to='/map'><MapPic className="mapPic" pic={mapPic} /></Links>
+            <Links  to='/info'><InfoPic className="InfoPic" pic={infoPic} /></Links>
+            <Links  to='/'>
+            <UserLogOut
               handleLogOut={this.handleLogOut}
             />
             </Links>

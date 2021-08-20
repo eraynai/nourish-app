@@ -1,6 +1,12 @@
 .profilePlaceholder {
-    width: 60%;
-    margin-top: 22px;
-    margin-left: 2rem;
-    
+	width: 60%;
+	margin-top: 22px;
+	margin-left: 2rem;
+}
+
+@media (max-width: 576px) {
+	.profilePlaceholder {
+		margin-left: 6rem;
+		width: 35%;
+	}
 }
