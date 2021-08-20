@@ -5,7 +5,49 @@ body, html {
 }
 
 
-.logo {
-  width: 50%;
+img.logo {
+  width: 15%;
+  margin-top: -36px;
+  margin-left: 111px;
 }
 
+.containermain {
+  display: grid;
+	grid-template-rows: 220px 37rem;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-areas: 
+      "header header header header"
+      "main main main main";
+}
+
+.titlemain {
+  grid-area: header;
+  text-align: center;
+}
+
+.bottommain {
+  grid-area: main;
+  background: black;
+  padding-left: 15px;
+}
+
+.authposition {
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  margin-top: -20px;
+}
+
+.slogan {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif; 
+  font-weight: bolder;
+}
+
+.startpage {
+    font-family: 'Pacifico', cursive;
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 3rem;
+}

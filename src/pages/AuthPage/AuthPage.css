@@ -1,0 +1,25 @@
+img.logo {
+    width: 68%;
+    margin-top: -30px;
+    margin-left: 111px;
+}
+.account-options {
+    margin-top: -115px;
+}
+
+.center-button {
+    margin-bottom: 6px;
+    padding:5px;
+}
+
+header.account-header {
+    margin-bottom: 5px;
+}
+
+.account-form-button {
+    margin-top: 5px;
+}
+
+input.form-input {
+    margin-bottom: 5px;
+}

@@ -1,19 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter as Router } from 'react-router-dom';
 import styled from 'styled-components';
 
-ReactDOM.render(
-	<Router>
-		<App />
-	</Router>,
-	document.getElementById('root')
-);
-
-
-export const AppGrid = styled.div`
+export const AuthGrid = styled.div`
 	display: grid;
 	grid-template-rows: 175px 60rem;
     grid-template-columns: 25% 25% 25% 25%;
