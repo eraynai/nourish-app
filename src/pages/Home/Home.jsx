@@ -68,13 +68,13 @@ export default class Home extends Component {
 
       </ItemA> 
       <ItemB>
-        <div class="card-has-background-black-has-text-white">
+        <div class="card-has-background-black">
           <div class="card-content">
             <div class="content">
   
              {this.state.fridge.length ? 
                 this.state.fridge.map(f =>
-                     <div> 
+                     <div className> 
                      {f.name}
                      <br/>
                      {f.lat}
