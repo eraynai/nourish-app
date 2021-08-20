@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Address = styled.div`
 	position: absolute;
-	top: 2rem;
-	left: 50vw;
+	top: 14vh;
+	left: 70vw;
 	transform: translateX(-50%);
 	width: 100%;
 	max-width: 400px;
