@@ -1,42 +1,50 @@
 .link {
-    display: flex;
+	display: flex;
 	justify-content: space-evenly;
-    margin-top: 3rem;
+	margin-top: 3rem;
 }
 
 .fontColor {
-    color: white;
-    text-align: left;
-    padding-left: 1rem;
-    white-space: break-spaces;
-    padding-top: 1rem;
+	color: white;
+	text-align: left;
+	padding-left: 1rem;
+	white-space: break-spaces;
+	padding-top: 1rem;
 }
 
 h2 {
-    margin-top: -6px;
-    font-size: 34px;
-    font-weight: bold;
+	margin-top: -6px;
+	font-size: 34px;
+	font-weight: bold;
 }
 
 .mapFridge {
-    width: 30%;
-    float: left;
-    margin-top: 7px;
+	width: 30%;
+	float: left;
+	margin-top: 7px;
 }
 
 button {
-    background-color: black;
-    color: white;
-    text-decoration: none !important;
-    border-radius: 9px;
-    padding-left: 25px;
-    padding-right: 25px;
+	background-color: black;
+	color: white;
+	text-decoration: none !important;
+	border-radius: 9px;
+	padding-left: 25px;
+	padding-right: 25px;
 }
 
 .title {
-    text-align: center;
-    color: white;
-    padding-top: 5px
+	text-align: center;
+	color: white;
+	padding-top: 5px;
 }
-  /* a:hover, a:active {
+/* a:hover, a:active {
     background-color: red; */
+
+@media (max-width: 576px) {
+	h2 {
+		margin-top: 0;
+		margin-left: 5rem;
+		font-size: 1.4rem;
+	}
+}

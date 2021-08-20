@@ -3,7 +3,7 @@ import './ProfilePlaceholder.css';
 export default function ProfilePlaceholder(props) {
     return(
         <div >
-            <img src={props.pic} className="profilePlaceholder" />
+            <img src={props.pic} alt="profile icon" className="profilePlaceholder" />
         </div>
     )
 }

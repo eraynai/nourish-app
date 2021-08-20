@@ -1,14 +1,14 @@
 import { Component } from 'react';
 import React from 'react';
-import {Link, Switch} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './Home.css';
 import Nav from '../../components/Nav/Nav';
-import UserPic from '../../components/UserPic/UserPic';
 import { HomeGrid, ItemA, ItemB, ItemC } from './index';
 import MapFridge from '../../components/MapFridge/MapFridge';
 import mapFridge from '../../Static/assets/mapFridge.png';
 import profilePlaceholder from '../../Static/assets/profilePlaceholder.png';
 import ProfilePlaceholder from '../../components/ProfilePlaceholder/ProfilePlaceholder';
+// import Delete from '../../components/Delete/Delete';
 
 
 export default class Home extends Component {
@@ -73,9 +73,9 @@ export default class Home extends Component {
       </ItemA> 
       <ItemB>
         <h4 className="title">Your Fridge Details</h4>
-        <div class="card-has-background-black">
-          <div class="card-content">
-            <div class="content">
+        <div className="card-has-background-black">
+          <div className="card-content">
+            <div className="content">
             
              {this.state.fridge.length ? 
                 this.state.fridge.map(f =>
@@ -98,8 +98,9 @@ export default class Home extends Component {
                      <br/>
                      {f.imageUrl}
                      <br/>
-                     </div>
-     
+                         
+                    {/* <Delete id={f._id} getOneFridge={this.getOneFridge} /> */}
+                    </div> 
                 ): 
                 <div>
                   <h4>You currently don't have any fridges.</h4>
@@ -110,10 +111,10 @@ export default class Home extends Component {
         </div>
         {/* <Switch> */}
         <div className="link">
-        <Link className="link" id="button" exact to='/map'><button>Find A Fridge</button></Link>
+        <Link className="link" id="button" to='/map'><button>Find A Fridge</button></Link>
         &nbsp;&nbsp;&nbsp;
         
-        <Link class="link" id="button" exact to='/map'><button>Add A Fridge</button></Link>
+        <Link className="link" id="button" to='/map'><button>Add A Fridge</button></Link>
         &nbsp;&nbsp;&nbsp;  
         {/* </Switch> */}
         </div>

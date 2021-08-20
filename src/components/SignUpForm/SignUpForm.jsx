@@ -1,7 +1,5 @@
 import { Component } from 'react';
 import './SignUpForm.css';
-import Logo from '../Logo/Logo';
-import logo from '../../Static/assets/fridgeLogo.png';
 
 
 export default class SignUpForm extends Component {

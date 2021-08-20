@@ -1,18 +1,14 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import AuthPage from './pages/AuthPage/AuthPage';
 import MapPage from './pages/MapPage/MapPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Nav from './components/Nav/Nav';
 import Home from './pages/Home/Home';
 import InfoPage from './pages/InfoPage/InfoPage';
-import SignUpForm from './components/SignUpForm/SignUpForm';
-import LoginForm from './components/LoginForm/LoginForm';
 import Logo from './components/Logo/Logo';
 import logo from './Static/assets/fridgeLogo.png';
-import { AppGrid, ItemD, ItemE } from './index';
-
 
 export default class App extends Component {
 	state = {
@@ -47,43 +43,34 @@ export default class App extends Component {
 					<Switch>
 						<Route
 							path='/index'
-							render={(props) => (
-								<MapPage {...props} user={this.state.user} />
-							)}
+							render={(props) => <MapPage {...props} user={this.state.user} />}
 						/>
 						<Route
 							path='/home'
-							render={(props) => (
-								<Home {...props} user={this.state.user} /> 
-							)}
+							render={(props) => <Home {...props} user={this.state.user} />}
 						/>
 						<Route
 							path='/info'
-							render={(props) => (
-								<InfoPage {...props} user={this.state.user} /> 
-							)}
+							render={(props) => <InfoPage {...props} user={this.state.user} />}
 						/>
 						<Redirect to='/index' />
-						<div className="navbar">
-						<Nav setUserInState={this.setUserInState} />
+						<div className='navbar'>
+							<Nav setUserInState={this.setUserInState} />
 						</div>
 					</Switch>
-					
 				) : (
-						<div className="containermain">
-							<div className="titlemain">	
-								<h1 className="startpage">Nourish</h1>
-								<p className="slogan">Let's put an end to hunger together.</p>
-							</div>
-							<div className="bottommain">
-								<Logo pic={logo} />
-								<div className="authposition">
-									<AuthPage setUserInState={this.setUserInState}/>
-								</div>
+					<div className='containermain'>
+						<div className='titlemain'>
+							<h1 className='startpage'>Nourish</h1>
+							<p className='slogan'>Let's put an end to hunger together.</p>
+						</div>
+						<div className='bottommain'>
+							<Logo pic={logo} />
+							<div className='authposition'>
+								<AuthPage setUserInState={this.setUserInState} />
 							</div>
 						</div>
-					
-
+					</div>
 				)}
 			</React.Fragment>
 		);
