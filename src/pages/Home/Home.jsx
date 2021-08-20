@@ -5,6 +5,10 @@ import './Home.css';
 import Nav from '../../components/Nav/Nav';
 import UserPic from '../../components/UserPic/UserPic';
 import { HomeGrid, ItemA, ItemB, ItemC } from './index';
+import MapFridge from '../../components/MapFridge/MapFridge';
+import mapFridge from '../../Static/assets/mapFridge.png';
+import profilePlaceholder from '../../Static/assets/profilePlaceholder.png';
+import ProfilePlaceholder from '../../components/ProfilePlaceholder/ProfilePlaceholder';
 
 
 export default class Home extends Component {
@@ -64,32 +68,35 @@ export default class Home extends Component {
       <React.Fragment>
       <HomeGrid>
       <ItemA>  
-        <UserPic />
-
+        <ProfilePlaceholder className="profilePlaceholder" pic={profilePlaceholder} />
+        <h2 className="helloUser">Hello, {this.props.user.name}</h2>
       </ItemA> 
       <ItemB>
         <div class="card-has-background-black">
           <div class="card-content">
             <div class="content">
-  
+            
              {this.state.fridge.length ? 
                 this.state.fridge.map(f =>
-                     <div className> 
+                     
+                     <div className="fontColor">
+                     <MapFridge className="mapFridgeHome" pic={mapFridge} /> 
                      {f.name}
                      <br/>
-                     {f.lat}
+                     {/* {f.lat}
                      <br/>
-                     {f.lng}
+                     {f.lng} */}
                      <br/>
                      {f.address}
-                     <br />
-                     {f.time}
+                     {/* <br />
+                     {f.time} */}
                      <br />
                      {f.date}
                      <br/>
                      {f.description}
                      <br/>
                      {f.imageUrl}
+                     <br/>
                      </div>
      
                 ): 
